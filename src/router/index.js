@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BlogManager from "@/views/BlogManager";
+import AddBlog from "@/views/AddBlog";
+import EditBlog from "@/views/EditBlog";
+import ViewBlog from "@/views/ViewBlog";
+import PageNotFound from "@/views/PageNotFound";
 
 Vue.use(VueRouter)
 
@@ -8,16 +13,35 @@ const routes = [
   {
     path: '/',
     name: 'home',
+    redirect : "/blogs",
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/blogs',
+    name: 'BlogManager',
+    component: BlogManager
+  },
+  {
+    path: '/blogs/edit/:blogId',
+    name: 'EditBlog',
+    component: EditBlog
+  },
+  {
+    path: '/blogs/add',
+    name: 'AddBlog',
+    component: AddBlog
+  },
+  {
+    path: '/blogs/view/:blogId',
+    name: 'ViewBlog',
+    component: ViewBlog
+  },
+  {
+    path: '**',
+    name: 'PageNotFound',
+    component: PageNotFound
+  },
+
 ]
 
 const router = new VueRouter({
