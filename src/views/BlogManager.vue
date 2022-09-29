@@ -1,10 +1,11 @@
 <template>
-<div class="container mt-3">
+<div class="container mt-3 center">
   <div class="row">
-    <div class="col">
+    <div class="center">
       <p class="h3 text-success fw-bold">Blog manager
       <router-link to="/blogs/add" class="btn btn-success btn sm"><i class="fa fa-plus-circle"></i>New blog</router-link>
       </p>
+
       <form>
         <div class="row">
           <div class="col-md-4">
@@ -18,8 +19,8 @@
       </form>
     </div>
   </div>
-  <div class="container">
-    <table>
+  <div class="container" align-item="center">
+    <table class="center">
       <tr>
         <th>#</th>
         <th>Title</th>
@@ -81,5 +82,18 @@ export default {
 </script>
 
 <style scoped>
-
+td
+{
+  padding:0 15px;
+}
+th
+{
+  text-align: center;
+}
+td
+{
+  text-align: center;
+}
+table.center { width: 780px; margin-left: auto; margin-right: auto; }
+div.center {width: 780px; margin-left: auto; margin-right: auto; }
 </style>

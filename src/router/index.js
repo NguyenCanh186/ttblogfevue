@@ -5,7 +5,9 @@ import BlogManager from "@/views/BlogManager";
 import AddBlog from "@/views/AddBlog";
 import EditBlog from "@/views/EditBlog";
 import ViewBlog from "@/views/ViewBlog";
-import PageNotFound from "@/views/PageNotFound";
+// import PageNotFound from "@/views/PageNotFound";
+import Login from "@/views/Login";
+import store from "@/store";
 
 Vue.use(VueRouter)
 
@@ -36,11 +38,30 @@ const routes = [
     name: 'ViewBlog',
     component: ViewBlog
   },
+  // {
+  //   path: '**',
+  //   name: 'PageNotFound',
+  //   component: PageNotFound
+  // },
   {
-    path: '**',
-    name: 'PageNotFound',
-    component: PageNotFound
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
+  {
+    path: '/logout',
+    name: 'logout',
+    beforeEnter (to, from, next) {
+      store.dispatch('logout').then(() => {
+        if (this.$store.state.auth.status.loggedIn) {
+          return next('/');
+        }
+        location.reload();
+      }).catch(reason => {
+        console.log(reason)
+      })
+    }
+  }
 
 ]
 
