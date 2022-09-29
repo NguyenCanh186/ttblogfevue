@@ -2,7 +2,6 @@
   <div>
 
     <NavBar/>
-
     <router-view/>
   </div>
 

@@ -7,16 +7,19 @@
     <div class="text-end" v-if="!loggedIn">
       <router-link to="/login" class="btn btn-outline-light me-2">Login</router-link>
     </div>
-    <button class="btn btn-outline-light me-2">
-      <router-link to="/logout">Logout</router-link>
-    </button>
+    <div class="text-end" v-if="!loggedIn">
+      <router-link to="/register" class="btn btn-outline-light me-2">Register</router-link>
+    </div>
+    <div class="text-end" v-if="loggedIn">
+    <button class="btn btn-outline-light me-2" @click="logOut">Logout</button>
+    </div>
   </nav>
 </div>
 </template>
 
 <script>
 import login from '../views/Login'
-import authService from "@/services/auth-service";
+// import authService from "@/services/auth-service";
 export default {
   name: "NavBar",
   components: login,
@@ -26,11 +29,9 @@ export default {
     }
   },
   methods: {
-    logout() {
-      let response = authService.logout();
-      if (response) {
-        this.$store.state.auth.status.loggedIn = false
-      }
+    logOut() {
+      this.$store.dispatch('auth/logout');
+      this.$router.push('/login');
     }
   }
 }

@@ -5,9 +5,10 @@ import BlogManager from "@/views/BlogManager";
 import AddBlog from "@/views/AddBlog";
 import EditBlog from "@/views/EditBlog";
 import ViewBlog from "@/views/ViewBlog";
-// import PageNotFound from "@/views/PageNotFound";
 import Login from "@/views/Login";
 import store from "@/store";
+import Register from "@/views/Register";
+
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/logout',
